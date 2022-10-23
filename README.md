@@ -1,12 +1,20 @@
 # Grand Prix Circuit
 
-This repository contains documentation on the file format of the Grand Prix game by Distinctive Software, released by Accolade in 1988.
+This repository contains documentation on the file format of the Grand Prix game by Distinctive Software, released by Accolade in 1988. Information on the original game can be found on [wikipedia](https://en.wikipedia.org/wiki/Grand_Prix_Circuit_(video_game)).
 
-Information on the original game can be found on [wikipedia](https://en.wikipedia.org/wiki/Grand_Prix_Circuit_(video_game)).
+It turns out to work more or less for [The Cycles](https://en.wikipedia.org/wiki/The_Cycles:_International_Grand_Prix_Racing) as well, released a year later from the same publisher.
 
 # Proof of concept
 
-Create a subdirectory called `grandprix` and put the original game in this directory before running `extract-sprites.py`. All sprites from all PCS (4 colors CGA) and PES (16 colors EGA) files in the grandprix directory will be unpacked to a new directory called `sprites`.
+An installation of python 3 is required to run the proof of concept. Create a subdirectory called `grandprix` and put the original game in this directory before running `extract-sprites.py`. All sprites from all PCS (4 colors CGA) and PES (16 colors EGA) files in the grandprix directory will be unpacked to a new directory called `sprites`.
+
+## The Cycles
+
+A quick test reveals the proof of concept works for The Cycles as well, but there are some caveats:
+
+- Each file contains a sprite called PAT!, which does not actually contain sprite data. To be investigated.
+- The PAT! sprite may not extract properly on Windows since ! is not an allowed character for filenames
+- The uncompressed content size reported in the header does not match the actual size obtained after decompression. The proof of concept issues a warning but will continue unpacking. Converting the advertised value and the real value to hexadecimal sheds some light on this issue. For example both values in _Unpacked content size mismatch: expected 8584449 but is 33533_ convert to 82FD01 and 82FD respectively.
 
 # Compression
 
