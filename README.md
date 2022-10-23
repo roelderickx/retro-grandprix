@@ -61,7 +61,7 @@ Sprites are defined by a sprite header followed by the actual sprite data.
 | 0x02 | 2 | height
 | 0x04 | 4 | these 4 bytes have an unclear function, to be investigated
 | 0x08 | 2 | position on screen x-coordinate
-| 0x0A | 2 | position on screen x-coordinate
+| 0x0A | 2 | position on screen y-coordinate
 | 0x0C | 4 | layer info, see below
 
 #### Sprite layer info
